@@ -19,9 +19,13 @@ class ExampleUnitTest {
     @Test
     fun test_instance() {
         val user = User("1")
-        val user2 = User("2")
-        val user3 = User("3")
+        val user2 = User("2", "John", "Wick")
+        val user3 = User("3", "John", "Silverhand", avatar = null)
 
-        println(" $user $user2 $user3")
+        user.printMe()
+        user2.printMe()
+        user3.printMe()
+
+        //println(" $user $user2 $user3")
     }
 }
