@@ -22,10 +22,18 @@ class ExampleUnitTest {
         val user2 = User("2", "John", "Wick")
         val user3 = User("3", "John", "Silverhand", avatar = null)
 
-        user.printMe()
-        user2.printMe()
-        user3.printMe()
+    //    user.printMe()
+    //    user2.printMe()
+    //    user3.printMe()
 
         //println(" $user $user2 $user3")
+    }
+
+    @Test
+    fun test_factory(){
+       // val user = User.makeUser("John Cena")
+        //val user2 = User.makeUser("John Wick")
+        val user3 = User.makeUser("John Silverhand")
+        print(user3)
     }
 }

@@ -1,8 +1,9 @@
 package ru.skillbranch.devintensive.models
 
+import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
-class User(
+data class User(
         val id:String,
         var firstName:String?,
         var lastName:String?,
@@ -12,6 +13,7 @@ class User(
         val lastVisit: Date? = null,
         val isOnline: Boolean = false
 ){
+
     constructor ( id:String, firstName:String?, lastName:String?): this(
             id = id,
             firstName = firstName,
@@ -22,11 +24,13 @@ class User(
     constructor(id: String) : this(id, "John", "Doe $id" )
 
     init {
-        println("It's alive!!!${if(lastName==="Doe") "His name is $firstName $lastName" else "And his name is $firstName $lastName!!!" }\n" + 
-        "${getIntro()}")
+        println("It's alive!!!${if(lastName==="Doe") "His name is $firstName $lastName" else "And his name is $firstName $lastName!!!" }")
+        /*+
+        "${getIntro()}")*/
+
     }
 
-    private fun getIntro()="""
+    /*private fun getIntro()="""
         tu tu rtyr
         rtyty
          tu tu rtyr
@@ -46,5 +50,16 @@ class User(
             lastVisit $lastVisit
             isOnline: $isOnline
         """.trimIndent())
+    }*/
+
+    companion object Factory{
+        private var lastId :Int = -1
+        fun makeUser(fullName:String?) :User{
+            lastId++
+
+            val (firstName, lastName ) = Utils.parseFullName(fullName)
+            return User( id= "$lastId", firstName = firstName , lastName = lastName )
+        }
+
     }
 }
