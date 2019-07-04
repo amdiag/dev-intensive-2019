@@ -3,8 +3,10 @@ package ru.skillbranch.devintensive
 import org.junit.Test
 
 import org.junit.Assert.*
+import ru.skillbranch.devintensive.extensions.TimeUnits
 import ru.skillbranch.devintensive.extensions.add
 import ru.skillbranch.devintensive.extensions.format
+import ru.skillbranch.devintensive.extensions.toUserView
 import ru.skillbranch.devintensive.models.User
 import java.util.*
 
@@ -54,8 +56,8 @@ class ExampleUnitTest {
     fun test_copy() {
         val user = User.makeUser("John Wick")
         var user2 = user.copy(lastVisit = Date())
-        var user3 = user.copy(lastName = "Cena", lastVisit = Date().add(2, "hour"))
-        var user4 = user.copy(lastName = "1234", lastVisit = Date().add(-2, "seconds"))
+        //var user3 = user.copy(lastName = "Cena", lastVisit = Date().add(2, "hour"))
+        // var user4 = user.copy(lastName = "1234", lastVisit = Date().add(-2, "seconds"))
 
 //        if (user.equals(user2)) {
 //            println("equals data and hash \n ${user.hashCode()} $user \n ${user2.hashCode()} $user2")
@@ -71,12 +73,24 @@ class ExampleUnitTest {
 //            println("not equals adress \n ${System.identityHashCode(user)} $user \n ${System.identityHashCode(user2)} $user2")
 //        }
 
-        println("""
-            ${user.lastVisit?.format()}
-            ${user2.lastVisit?.format()}
-            ${user3.lastVisit?.format()}
-            ${user4.lastVisit?.format()}
-        """.trimIndent())
+        /*   println("""
+               ${user.lastVisit?.format()}
+               ${user2.lastVisit?.format()}
+               ${user3.lastVisit?.format()}
+               ${user4.lastVisit?.format()}
+           """.trimIndent())*/
 
+    }
+
+    @Test
+    fun test_dataq_mapping() {
+        val user = User.makeUser("fgf fgfg")
+        val newUser = user.copy(lastVisit = Date().add(-7, TimeUnits.SECOND))
+        println(user)
+
+
+        val userView = newUser.toUserView()
+
+        userView.printMe()
     }
 }
