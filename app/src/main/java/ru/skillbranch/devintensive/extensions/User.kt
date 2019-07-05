@@ -13,7 +13,7 @@ fun User.toUserView() : UserView{
     return UserView(id, fullName = "", avatar = avatar, nickName = nickname, initials = initials, status = status)
 }
 
-private fun Date.humanizeDiff(): String{
+public fun Date.humanizeDiff(): String{
     //ToDo: not implemented
     return ""
 }

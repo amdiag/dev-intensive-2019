@@ -7,7 +7,7 @@ import ru.skillbranch.devintensive.extensions.TimeUnits
 import ru.skillbranch.devintensive.extensions.add
 import ru.skillbranch.devintensive.extensions.format
 import ru.skillbranch.devintensive.extensions.toUserView
-import ru.skillbranch.devintensive.models.User
+import ru.skillbranch.devintensive.models.*
 import java.util.*
 
 /**
@@ -92,5 +92,20 @@ class ExampleUnitTest {
         val userView = newUser.toUserView()
 
         userView.printMe()
+    }
+
+    @Test
+    fun test_abstract_factory() {
+        val user = User.makeUser("123 123")
+        val txtMessage = BaseMessage.makeMessage(user, Chat("0"), payload = "any text message", type = "text")
+        val imgMessage = BaseMessage.makeMessage(user, Chat("0"), payload = "any image message", type = "image")
+//        when (txtMessage) {
+//            is BaseMessage -> println("this is base message")
+//            is TextMessage -> println("this is text message")
+//            is ImageMessage -> println("this is image message")
+//        }
+
+        println(txtMessage.formatMessage())
+        println(imgMessage.formatMessage())
     }
 }
