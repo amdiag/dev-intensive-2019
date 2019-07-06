@@ -10,7 +10,7 @@ fun User.toUserView(): UserView {
     val initials = Utils.toInitials(firstName, lastName)
     val status = if (lastVisit == null) "Not " else if (isOnline) "online" else "Last time was ${lastVisit.humanizeDiff()}"
 
-    return UserView(id, fullName = "", avatar = avatar, nickName = nickname, initials = initials, status = status)
+    return UserView(id, fullName = "", avatar = avatar, nickName = nickname, initials = initials!!, status = status)
 }
 
 public fun Date.humanizeDiff(): String {
