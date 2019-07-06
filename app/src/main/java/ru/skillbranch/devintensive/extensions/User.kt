@@ -15,6 +15,19 @@ fun User.toUserView(): UserView {
 
 public fun Date.humanizeDiff(): String {
     //ToDo: not implemented
-    return ""
-}
+    val diff = (Date().getTime() - this.getTime()) / 1000
 
+    return when (diff) {
+        in 0..1 -> "только что"
+        in 1..45 -> "несколько секунд назад"
+        in 45..75 -> "минуту назад"
+        in 75..45 * 60 -> "${diff/60} минут назад"
+        in 45 * 60..75 * 60 -> "час назад"
+        in 75 * 60..22 * 3600 -> "${diff/3600} часов назад"
+        in 22 * 3600..26 * 3600 -> "день назад"
+        in 26 * 3600..360 * 24 * 3600 -> "${diff/3600/24} дней назад"
+        //>360д
+        else -> "более года назад"
+        //else -> "unk"
+    }
+}

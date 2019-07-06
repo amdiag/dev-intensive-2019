@@ -13,7 +13,7 @@ object Utils {
     }
 
     fun transliteration(payload: String, divider: String = " "): String {
-        // ToDo: not implemented
+        // ToDo use buildString()
         var translitString = ""
         for (char in payload) {
             translitString += when (char) {
