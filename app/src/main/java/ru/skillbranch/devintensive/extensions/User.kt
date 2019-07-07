@@ -14,7 +14,6 @@ fun User.toUserView(): UserView {
 }
 
 public fun Date.humanizeDiff(): String {
-    //ToDo: not implemented
     val diff = (Date().getTime() - this.getTime()) / 1000
 
     return when (diff) {
