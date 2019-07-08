@@ -3,7 +3,7 @@ package ru.skillbranch.devintensive.models
 import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
-class User(//private val config: Builder
+data class User(//private val config: Builder
         val id: String,
         var firstName: String?,
         var lastName: String?,
