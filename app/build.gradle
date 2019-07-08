@@ -35,7 +35,7 @@ ext {
     // versions between modules can avoid behavior conflicts.
     supportLibVersion = "27.1.1"
 }
-
+//
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 //    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"

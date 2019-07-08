@@ -126,9 +126,31 @@ class ExampleUnitTest {
     }
 
     @Test
+    fun test_to_initials_2() {
+        val initials1 = Utils.toInitials("john" ,"doe") //JD
+        val initials2 = Utils.toInitials("John", null) //J
+        val initials3 = Utils.toInitials(null, null) //null
+        val initials4 = Utils.toInitials(" ", "") //null
+
+        assertEquals("JD", initials1)
+        assertEquals("J", initials2)
+        assertEquals(null, initials3)
+        assertEquals(null, initials4)
+    }
+
+    @Test
     fun test_utils_transliteration() {
         val answer = Utils.transliteration("вкпкпекпи апааа", "-")
         println(answer)
+    }
+
+    @Test
+    fun test_transliteration() {
+        val trans1 = Utils.transliteration("Женя Стереотипов") //Zhenya Stereotipov
+        val trans2 = Utils.transliteration("Amazing Петр","_") //Amazing_Petr
+
+        assertEquals("Zhenya Stereotipov", trans1)
+        assertEquals("Amazing_Petr", trans2)
     }
 
     @Test
