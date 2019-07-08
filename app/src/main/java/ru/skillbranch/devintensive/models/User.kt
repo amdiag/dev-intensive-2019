@@ -67,7 +67,6 @@ data class User(//private val config: Builder
             return User(id = "$lastId", firstName = firstName, lastName = lastName)
         }
     }
-
 //    companion object Builder {
 //        protected var id: String = ""
 //        protected var firstName: String? = ""
