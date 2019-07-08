@@ -95,10 +95,12 @@ object Utils {
         if (firstName?.trim().isNullOrBlank() and lastName?.trim().isNullOrBlank()) {
             return null
         }
+        if( !lastName?.trim().isNullOrEmpty() and firstName?.trim().isNullOrBlank() )
+            return "${lastName?.trim()?.get(0).toString().toUpperCase()}"
 
         if (lastName != null) {
-            return """${firstName?.get(0).toString().toUpperCase()}${lastName.get(0).toString().toUpperCase()}"""
+            return """${firstName?.trim()?.get(0).toString().toUpperCase()}${lastName.trim()?.get(0).toString().toUpperCase()}"""
         } else
-            return "${firstName?.get(0).toString().toUpperCase()}"
+            return "${firstName?.trim()?.get(0).toString().toUpperCase()}"
     }
 }

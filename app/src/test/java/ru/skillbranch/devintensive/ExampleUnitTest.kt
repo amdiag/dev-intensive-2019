@@ -131,11 +131,33 @@ class ExampleUnitTest {
         val initials2 = Utils.toInitials("John", null) //J
         val initials3 = Utils.toInitials(null, null) //null
         val initials4 = Utils.toInitials(" ", "") //null
+        val initials5 = Utils.toInitials(" ", "dohn")
+        val initials6 = Utils.toInitials(null, "john")
+
+        println("${initials1} ${initials2} ${initials3} ${initials4} ${initials5} ${initials6}")
 
         assertEquals("JD", initials1)
         assertEquals("J", initials2)
         assertEquals(null, initials3)
         assertEquals(null, initials4)
+        assertEquals(null, initials5)
+        assertEquals(null, initials6)
+    }
+
+    @Test
+    fun toInitialsTest_3(){
+        /* skillBranch tests */
+        assertEquals("JD", Utils.toInitials("john", "doe"))
+        assertEquals("D", Utils.toInitials("Dohn", null))
+        assertEquals(null, Utils.toInitials(null, null))
+        assertEquals(null, Utils.toInitials(" ", ""))
+
+        /* additional tests */
+        assertEquals(null, Utils.toInitials(" ", null))
+        assertEquals(null, Utils.toInitials(null, ""))
+        assertEquals("T", Utils.toInitials(null, "  tommy"))
+        assertEquals("ST", Utils.toInitials("  samuel  ", "  tommy"))
+        assertEquals("J", Utils.toInitials(null, "John"))
     }
 
     @Test
